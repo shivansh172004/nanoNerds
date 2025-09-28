@@ -1,14 +1,21 @@
-import Navbar from "./Navbar"; // dusri file se navbar ka sab kuch idhr use krna ho toh
-import Footer from "./Footer"; // dusri file se footer ke sab kuch idhr use krna ho toh
+// components/Layout.jsx
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Header from './Header';
+import Footer from './Footer';
 
-function Layout({ children }) {
+const Layout = ({ children }) => {
+  const { darkMode } = useSelector(state => state.theme);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-1">{children}</main>
+    <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+      <Header />
+      <main className="flex-1">
+        {children}
+      </main>
       <Footer />
     </div>
   );
-}
+};
 
-export default Layout // agr koi hor file mei iss layout ka sab kuch use krna ho
+export default Layout;
