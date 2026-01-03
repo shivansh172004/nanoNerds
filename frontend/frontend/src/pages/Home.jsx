@@ -18,9 +18,9 @@ import {
 } from "lucide-react";
 
 const Home = () => {
-  const darkMode = useSelector((state) => state.theme?.darkMode ?? false);
-  const posts = useSelector((state) => state.posts?.items ?? []);
-  const members = useSelector((state) => state.team?.members ?? []);
+  const { darkMode } = useSelector((state) => state.theme);
+  const { posts } = useSelector((state) => state.posts);
+  const { members } = useSelector((state) => state.team);
 
   const { isMaximized } = useWindowState();
 
@@ -256,7 +256,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(Array.isArray(posts) ? posts : []).slice(0, 3).map((post) => (
+            {posts.slice(0, 3).map((post) => (
               <article
                 key={post.id}
                 className={`rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 ${

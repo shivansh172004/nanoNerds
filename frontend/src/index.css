@@ -1,14 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
-/* Simple defaults */
-html,
-body,
-#root {
-  height: 100%;
-}
-body {
-  background-color: #ffffff;
-  color: #111827; /* Tailwind gray-900 */
-}
+@tailwind utilities; */
+@import "tailwindcss";
