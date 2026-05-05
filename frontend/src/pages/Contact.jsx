@@ -147,7 +147,7 @@ const Contact = () => {
             </p>
             <button
               onClick={() => setSubmitSuccess(false)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
+              className="bg-linear-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
             >
               Send Another Message
             </button>
@@ -248,7 +248,7 @@ const Contact = () => {
 
             {submitError && (
               <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start">
-                <AlertCircle className="h-5 w-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-5 w-5 text-red-600 mr-2 shrink-0 mt-0.5" />
                 <span className="text-sm text-red-800">{submitError}</span>
               </div>
             )}
@@ -371,7 +371,7 @@ const Contact = () => {
                 className={`w-full py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center ${
                   isSubmitting
                     ? 'bg-gray-400 cursor-not-allowed text-gray-200'
-                    : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transform hover:scale-105'
+                    : 'bg-linear-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transform hover:scale-105'
                 }`}
               >
                 {isSubmitting ? (
@@ -465,7 +465,7 @@ export default Contact;
 //         ${darkMode ? 'bg-gray-800' : 'bg-white shadow-xl'}`}
 //       >
 //         {/* LEFT PANEL */}
-//         <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 text-white flex flex-col justify-between">
+//         <div className="bg-linear-to-br from-blue-600 to-purple-600 p-8 text-white flex flex-col justify-between">
 //           <div>
 //             <h2 className="text-3xl font-bold mb-4">Let’s Connect 👋</h2>
 //             <p className="text-sm opacity-90 mb-6">

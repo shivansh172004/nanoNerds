@@ -1,10 +1,7 @@
-// src/api/config.js
 import axios from 'axios';
 
-// API Base URL
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
-// Create axios instance
 const api = axios.create({
   baseURL: API_URL,
   headers: {
@@ -12,7 +9,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor - Add token to requests
+// Add token to every request automatically
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -21,27 +18,17 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor - Handle errors globally
+// Handle auth errors globally
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response) {
-      // Handle 401 Unauthorized - redirect to login
-      if (error.response.status === 401) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '/login';
-      }
-      
-      // Handle 403 Forbidden
-      if (error.response.status === 403) {
-        console.error('Access forbidden');
-      }
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }

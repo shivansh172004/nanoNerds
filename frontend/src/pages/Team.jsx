@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Mail, Linkedin, Github, Phone, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Team = () => {
   const { darkMode } = useSelector(state => state.theme);
@@ -26,7 +27,7 @@ const Team = () => {
           </p>
         </div>
 
-        Team Grid
+        {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {members.map(member => (
             <div key={member.id} className={`p-6 rounded-xl transition-all duration-300 hover:scale-105 ${
@@ -67,11 +68,13 @@ const Team = () => {
         </div>
 
         {/* CTA Section */}
-        <div className={`mt-16 p-12 rounded-xl text-center ${darkMode ? 'bg-gradient-to-r from-gray-800 to-gray-700' : 'bg-gradient-to-r from-blue-600 to-purple-600'}`}>
+        <div className={`mt-16 p-12 rounded-xl text-center ${darkMode ? 'bg-gradient-to-right from-gray-800 to-gray-700' : 'bg-gradient-to-right from-blue-600 to-purple-600'}`}>
           <h2 className="text-3xl font-bold text-white mb-4">Want to Join Our Team?</h2>
           <p className="text-xl text-blue-100 mb-8">We're always looking for passionate individuals to join our club</p>
           <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300">
+            <Link to="/Register">
             Become a Member
+            </Link>
           </button>
         </div>
       </div>

@@ -130,13 +130,6 @@ const team = [
     email: "souradip32@gmail.com",
     order: 1,
   },
-  {
-    name: "Priya Singh",
-    position: "Vice President",
-    year: "3rd Year ECE",
-    email: "priya@nanonerds.com",
-    order: 2,
-  },
 ];
 
 const quizzes = [

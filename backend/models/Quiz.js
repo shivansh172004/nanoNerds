@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const quizSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -14,8 +14,7 @@ const quizSchema = new mongoose.Schema({
     correctAnswer: Number,
     explanation: String
   }],
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 });
 
-const Quiz = mongoose.model('Quiz', quizSchema);
-export default Quiz;
+export default mongoose.model("Quiz", quizSchema);

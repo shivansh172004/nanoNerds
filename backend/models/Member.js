@@ -1,9 +1,16 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const memberSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  role: { type: String, required: true },
-  image: { type: String }
+  email: String,
+  rollNumber: String,
+  phone: String,
+  year: String,
+  branch: String,
+  interests: [String],
+  motivation: String,
+  status: { type: String, default: "pending" },
+  appliedDate: String
 }, { timestamps: true });
-const Member = mongoose.model('Member', memberSchema);
-export default Member;
+
+export default mongoose.model("Member", memberSchema);

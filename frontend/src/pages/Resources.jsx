@@ -161,7 +161,7 @@ const Resources = () => {
           }`}>
             Share your study materials, notes, or project files with fellow members
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200">
+          <button className="bg-linear-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200">
             Contribute Resources
           </button>
         </div>

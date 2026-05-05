@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -9,8 +9,8 @@ const teamSchema = new mongoose.Schema({
   linkedin: String,
   specialization: String,
   bio: String,
-  order: Number
+  order: Number,
+  isActive: { type: Boolean, default: true }
 });
 
-const Team = mongoose.model('Team', teamSchema);
-export default Team;
+export default mongoose.model("Team", teamSchema);

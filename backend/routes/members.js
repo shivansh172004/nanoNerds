@@ -1,32 +1,27 @@
-const express = require('express');
+import express from "express";
+import Member from "../models/Member.js";
+import { protect, authorize } from "../middleware/auth.js";
+
 const router = express.Router();
-const mongoose = require('mongoose');
 
-// Define Schema for the nanonerds collection
-const memberSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  rollNumber: String,
-  phone: String,
-  year: String,
-  branch: String,
-  interests: [String],
-  motivation: String,
-  status: { type: String, default: 'pending' },
-  appliedDate: String
-});
-
-const Member = mongoose.model('Member', memberSchema);
-
-// ✅ This handles: POST http://localhost:5000/api/members/register
-router.post('/register', async (req, res) => {
+// POST - submit membership application (public)
+router.post("/register", async (req, res) => {
   try {
-    const newMember = new Member(req.body);
-    const savedMember = await newMember.save();
-    res.status(201).json({ success: true, data: savedMember });
+    const newMember = await Member.create(req.body);
+    res.status(201).json({ success: true, data: newMember });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 });
 
-module.exports = router;
+// GET - all members (admin only)
+router.get("/all", protect, authorize("admin", "moderator"), async (req, res) => {
+  try {
+    const members = await Member.find().sort({ createdAt: -1 });
+    res.json({ success: true, count: members.length, data: members });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+export default router;
